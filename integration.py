@@ -8,6 +8,9 @@ def integral_aux(func, a, b, N=100): #default is 100 integration points
         func ( function_object ): the function to integrate. The author suggests using lambda
         a, b ( float ): start and end points of the integration
         N (int): number of sections the integration space is divided into
+
+    Returns:
+        result ( float ): the integral of func from a to b based off of Simpson's approximation
     """
     if N % 2 == 1:
         raise ValueError("N must be an even integer") #see above equations
@@ -27,6 +30,9 @@ def integral(func, a, b, precision):
         a, b ( float ): start and end points of the integration
         precision ( float ): the condition for finishing the integration,
         such that | integral_aux(... npoints) - integral_aux(... 2*npoints)| < precision
+
+    Returns:
+        result ( float ): the integral of func from a to b based off of Simpson's approximation
     """
     N = 100
     result_1 = integral_aux(func, a, b, N)
